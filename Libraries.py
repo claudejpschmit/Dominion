@@ -43,3 +43,30 @@ CARDNAMES = []
 for name in CARDS:
     CARDNAMES.append(name)
 CARDNAMES.sort()
+
+# Make a dict of all the Dominion Expansions with some descriptive attributes
+EXPANSION = namedtuple("EXPANSION", "Name Number StandAlone Year Description")
+
+EXPANSIONS = {
+        'Base':         EXPANSION("Base", 1, True, 2008, "The Dominion base game."), 
+        'Intrigue':     EXPANSION("Intrigue", 2, True, 2009, "The First Expansion."), 
+        'Seaside':      EXPANSION("Seaside", 3, False, 2009, "The Dominion base game."), 
+        'Alchemy':      EXPANSION("Alchemy", 4, False, 2010, "The Dominion base game."),
+        'Prosperity':   EXPANSION("Prosperity", 5, False, 2010, "The Dominion base game."), 
+        'Cornucopia':   EXPANSION("Cornucopia", 6, False, 2011, "The Dominion base game."), 
+        'Hinterlands':  EXPANSION("Hinterlands", 7, False, 2011, "The Dominion base game."), 
+        'DarkAges':     EXPANSION("Dark Ages", 8, False, 2012, "The Dominion base game."), 
+        'Guilds':       EXPANSION("Guilds", 9, False, 2013, "The Dominion base game."), 
+        'Adventures':   EXPANSION("Adventures", 10, False, 2015, "The Dominion base game."),
+        'Empires':      EXPANSION("Empires", 11, False, 2016, "The Dominion base game."), 
+        'Nocturne':     EXPANSION("Nocturne", 12, False, 2017, "The Dominion base game.") 
+        }
+
+tmp = []
+for name in EXPANSIONS:
+    tmp.append((name, EXPANSIONS[name].Number))
+tmp.sort(key=lambda tup: tup[1])
+
+EXPANSION_NAMES_CHR = []
+for tup in tmp:
+    EXPANSION_NAMES_CHR.append(tup[0])
