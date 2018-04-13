@@ -18,26 +18,27 @@ class Dominion (object):
         self.cnv.configure(xscrollcommand=self.hScroll.set,yscrollcommand=self.vScroll.set)
         self.frm = tk.Frame(self.cnv)
         self.cnv.create_window(0,0,window=self.frm,anchor='nw')
-        
+        self.imageScale = 0.7 
         # Initializing Basic Window 
         # Make dropdown Menu with all Cardnames.
         self.OM_var = tk.StringVar(self.root)
         self.OM_var.set(CARDNAMES[0])
         self.OM = apply(tk.OptionMenu, (self.frm, self.OM_var) + tuple(CARDNAMES))
-        self.OM.pack()
+        self.OM.grid(row = 1, column = 0)
 
 
-    def drawOnePic(self, name, nlabel = 0):
+    def drawOnePic(self, name, nlabel = 0, scale = 1):
         image = Image.open(CARDS[name].imagePath)
+        imageWidth = image.size[0]
+        imageHeight = image.size[1]
+        image = image.resize((int(scale*imageWidth),int(scale*imageHeight)), Image.ANTIALIAS)
         photo = ImageTk.PhotoImage(image)
         label = tk.Label(self.frm, image=photo)
         label.image = photo
         if len(self.labels) == 0:
-            print "a"
-            label.pack()
+            label.grid(row = 2, column = 0, columnspan = 2, padx=15)
             self.labels.append(label)
         else:
-            print "b"
             self.labels[nlabel].configure(image = photo)
     def drawAllPics(self):
         for name in CARDNAMES:
@@ -45,19 +46,19 @@ class Dominion (object):
             photo = ImageTk.PhotoImage(image)
             label = tk.Label(self.frm, image=photo)
             label.image = photo
-            label.pack(side="left")
+            #label.pack(side=tk.BOTTOM)
             self.labels.append(label)
 
     def updateCardPreview(self):
-        self.drawOnePic(self.OM_var.get(), 0)
+        self.drawOnePic(self.OM_var.get(), 0, self.imageScale)
         self.frm.update_idletasks()
         self.cnv.configure(scrollregion=(0,0,self.frm.winfo_width(), self.frm.winfo_height()))
 
     def run(self):
         self.button = tk.Button(self.frm, text='Update Preview', command=self.updateCardPreview)
-        self.button.pack()
+        self.button.grid(row=1, column = 1)
 
-        self.drawOnePic(self.OM_var.get())
+        self.drawOnePic(self.OM_var.get(), scale = self.imageScale)
         
         #----- Resize window ------#
         self.frm.update_idletasks()
