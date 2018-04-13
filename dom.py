@@ -5,6 +5,7 @@ from Libraries import *
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
+        self.root.tk.call('tk', 'scaling', 2)
         self.root.minsize(width=1920, height=1080)
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)

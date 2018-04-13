@@ -34,9 +34,37 @@ Dominion_base_cards = {
         'Woodcutter':       CARD(3, "Base", "Action", './pictures/dominion/woodcutter.jpg'),
         'Workshop':         CARD(3, "Base", "Action", './pictures/dominion/workshop.jpg')
         }
+Intrigue_cards = {
+        'Baron':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/baron.jpg'),
+        'Bridge':      CARD(4, "Intrigue", "Action", './pictures/Intrigue/bridge.jpg'),
+        'Conspirator':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/conspirator.jpg'),
+        'Coppersmith':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/coppersmith.jpg'),
+        'Courtyard':       CARD(2, "Intrigue", "Action", './pictures/Intrigue/courtyard.jpg'),
+        'Duke':       CARD(5, "Intrigue", "Victory", './pictures/Intrigue/duke.jpg'),
+        'GreatHall':       CARD(3, "Intrigue", "Action - Victory", './pictures/Intrigue/greathall.jpg'),
+        'Harem':       CARD(6, "Intrigue", "Treasure - Victory", './pictures/Intrigue/harem.jpg'),
+        'Ironworks':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/ironworks.jpg'),
+        'Masquerade':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/masquerade.jpg'),
+        'MiningVillage':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/miningvillage.jpg'),
+        'Minion':       CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/minion.jpg'),
+        'Nobles':       CARD(6, "Intrigue", "Action - Victory", './pictures/Intrigue/nobles.jpg'),
+        'Pawn':       CARD(2, "Intrigue", "Action", './pictures/Intrigue/pawn.jpg'),
+        'Saboteur':       CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/saboteur.jpg'),
+        'Scout':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/scout.jpg'),
+        'SecretChamber':       CARD(2, "Intrigue", "Action - Reaction", './pictures/Intrigue/secretchamber.jpg'),
+        'ShantyTown':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/shantytown.jpg'),
+        'Steward':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/steward.jpg'),
+        'Swindler':       CARD(3, "Intrigue", "Action - Attack", './pictures/Intrigue/swindler.jpg'),
+        'Torturer':       CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/torturer.jpg'),
+        'TradingPost':       CARD(5, "Intrigue", "Action", './pictures/Intrigue/tradingpost.jpg'),
+        'Tribute':       CARD(5, "Intrigue", "Action", './pictures/Intrigue/tribute.jpg'),
+        'Upgrade':       CARD(5, "Intrigue", "Action", './pictures/Intrigue/upgrade.jpg'),
+        'WishingWell':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/wishingwell.jpg')
+        }
 
 # ADD all expansions to the CARDS dictionary.
 CARDS.update(Dominion_base_cards)
+CARDS.update(Intrigue_cards)
 
 # Make a list with all the card names in alphabetical order.
 CARDNAMES = []
