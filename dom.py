@@ -5,7 +5,7 @@ from Libraries import *
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
-        self.scale = 3
+        self.scale = 2
         self.root.tk.call('tk', 'scaling', self.scale)
         self.fontSize = 6
         self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1080))
@@ -14,9 +14,11 @@ class Dominion (object):
         self.root.grid_columnconfigure(0,weight=1)
         self.cnv = tk.Canvas(self.root)
         self.cnv.grid(row=0,column=0,sticky='nswe')
-        self.hScroll = tk.Scrollbar(self.root, orient=tk.HORIZONTAL, command = self.cnv.xview, width = int(self.scale*16))
+        self.hScroll = tk.Scrollbar(self.root, orient=tk.HORIZONTAL,\
+                command = self.cnv.xview, width = int(self.scale*16))
         self.hScroll.grid(row=1, column=0, sticky='we')
-        self.vScroll = tk.Scrollbar(self.root, orient=tk.VERTICAL, command = self.cnv.yview, width = int(self.scale*16))
+        self.vScroll = tk.Scrollbar(self.root, orient=tk.VERTICAL,\
+                command = self.cnv.yview, width = int(self.scale*16))
         self.vScroll.grid(row=0, column=1, sticky='ns')
         self.cnv.configure(xscrollcommand=self.hScroll.set,yscrollcommand=self.vScroll.set)
         self.frm = tk.Frame(self.cnv, bg='white')
@@ -78,7 +80,7 @@ class Dominion (object):
             self.toggles.append(toggle)
             self.CheckBoxVars.append(var)
             self.MAXROW +=1
-
+        self.ExpansionsSelected = []
         ##################################
         #self.CheckBoxes = []
         #nBox = 0
@@ -162,18 +164,19 @@ class Dominion (object):
         self.drawOnePic(self.OM_var.get(), 0, self.scale*self.imageScale)
         self.frm.update_idletasks()
         self.cnv.configure(scrollregion=(0,0,self.frm.winfo_width(), self.frm.winfo_height()))
+    
     def updateToggle(self, event):
         l = event.widget
         if l.cget("textvariable") == 1:
             l.configure(image=self.photo_off)
             l.configure(textvariable = 0) 
-                #imagel.configure(image=image_on)
-                #imagel.image=image_on
         else:
             l.configure(image=self.photo_on)
             l.configure(textvariable = 1) 
-            #imagel.configure(image=image_off)
-            #imagel.image=image_off
+        
+        # Code to update selection here. ST everytime a toggle is changed,
+        # the selection is automatically updated.
+        # actually I don't think I need that, the button press just needs to go through all the labels and get the textvariable value to determine which one is added.
 
     def run(self):
         self.button = tk.Button(self.frm, text='Update Preview',\
