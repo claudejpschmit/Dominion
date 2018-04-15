@@ -74,7 +74,7 @@ class Dominion (object):
             toggle.image=self.photo_off
             toggle.grid(row = self.N, column=0, sticky="W", padx=5*self.scale)
             toggle.bind("<Button-1>", self.updateToggle) 
-            lab = tk.Label(self.frm2, text=EXPANSIONS[name].Name, bg='white', font=('Helvetica',int(self.fontSize*self.scale)))
+            lab = tk.Label(self.frm2, text=EXPANSIONS[name].Name, bg='white', font=('Helvetica',int(self.fontSize*self.scale)), textvariable=name)
             lab.grid(row = self.N, column=1, sticky="W")
             self.N+=1
             self.toggles.append(toggle)
@@ -108,15 +108,9 @@ class Dominion (object):
         #        font=('Helvetica',int(self.fontSize*self.scale))).grid(row = 4, column=1, sticky="W")
         #self.selectionPrintLabels = []
 #
-    def registerCheckBoxes(self):
+    def drawSample(self):
         counter = 0
-        self.ExpansionsSelected = []
-        for var in self.CheckBoxVars:
-            counter +=1
-            if var.get():
-                self.ExpansionsSelected.append(EXPANSION_NAMES_CHR[counter-1])
-        self.printCheckBoxSelection()
-
+        
     def printCheckBoxSelection(self):
         counter = 1
         for name in self.ExpansionsSelected:
@@ -184,8 +178,8 @@ class Dominion (object):
         self.button.grid(row=1, column = 1)
         self.drawOnePic(self.OM_var.get(), scale = self.imageScale*self.scale)
         
-        self.button2 = tk.Button(self.frm, text='Apply Selection',\
-                command=self.registerCheckBoxes, font=('Helvetica',int(self.fontSize*self.scale)))
+        self.button2 = tk.Button(self.frm, text='Draw Sample',\
+                command=self.drawSample, font=('Helvetica',int(self.fontSize*self.scale)))
         self.button2.grid(row=self.MAXROW+1, columnspan = 2)
         self.MAXROW+=1
         #----- Resize window ------#
