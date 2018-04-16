@@ -5,10 +5,10 @@ from Libraries import *
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
-        self.scale = 2
+        self.scale = 1.5
         self.root.tk.call('tk', 'scaling', self.scale)
         self.fontSize = 6
-        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1080))
+        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1000))
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)
         self.root.grid_columnconfigure(0,weight=1)
@@ -24,6 +24,17 @@ class Dominion (object):
         self.frm = tk.Frame(self.cnv, bg='white')
         self.cnv.create_window(0,0,window=self.frm,anchor='nw')
         self.imageScale = 0.7 
+        
+        
+        self.displayfrm = tk.Frame(self.cnv, bg='blue')
+        self.cnv.create_window(self.scale*485,0,window=self.displayfrm,anchor='nw')
+        self.titleLabel = tk.Label(self.displayfrm, text="DOMINION - Card Randomizer",\
+            bg='black',fg='white', font=('Helvetica',int(self.fontSize*self.scale)))
+        self.titleLabel.grid(row=0, columnspan=2)
+
+        
+        
+        
         # Initializing Basic Window 
         # Make dropdown Menu with all Cardnames.
         self.OM_var = tk.StringVar(self.root)
@@ -35,15 +46,15 @@ class Dominion (object):
         # Generate some Title text
         self.titleLabel = tk.Label(self.frm, text="DOMINION - Card Randomizer",\
                 bg='blue', fg='white', font=('Helvetica',int(self.fontSize*self.scale)))
-        self.titleLabel.grid(row=0, columnspan=2, pady = 10)
+        self.titleLabel.grid(row=0, columnspan=2, pady = int(self.scale*10))
         
         # Generate Checkboxes for expansions
         self.Descr = tk.Label(self.frm, text="Check Expansions from which cards will be picked.",\
                 bg='blue', fg='white', font=('Helvetica',int(self.fontSize*self.scale)))
-        self.Descr.grid(row=3, columnspan=2, pady = 10)
-        self.labOpt = tk.Label(self.frm, text="Options:", bg='pink',\
+        self.Descr.grid(row=3, columnspan=2, pady = int(self.scale*10))
+        self.labOpt = tk.Label(self.frm, text="Expansions:", bg='pink',\
                 font=('Helvetica',int(self.fontSize*self.scale))).grid(row = 4, column=0, sticky="W")
-        self.lab = tk.Label(self.frm, text="Selection:", bg='pink',\
+        self.lab = tk.Label(self.frm, text="Options:", bg='pink',\
                 font=('Helvetica',int(self.fontSize*self.scale))).grid(row = 4, column=1, sticky="W")
 
         ###################
@@ -64,74 +75,53 @@ class Dominion (object):
         #self.toggleLabel = tk.Label(self.frm,image=self.image_off)
         #self.toggleLabel.image=self.image_off
 
-        self.frm2 = tk.Frame(self.frm, height=100,width=300,bg="white")
-        self.frm2.grid(row=5,column =0, sticky="W", pady=5*self.scale)
+        self.togglefrm = tk.Frame(self.frm, height=100,width=300,bg="white")
+        self.togglefrm.grid(row=5,column =0, sticky="W", pady=int(5*self.scale))
 
         self.N = 0
+        self.toggleLabels = []
         for name in EXPANSION_NAMES_CHR:
             var = tk.IntVar(value=0)
-            toggle = tk.Label(self.frm2,image=self.photo_off, bg="white", textvariable=var)
+            toggle = tk.Label(self.togglefrm,image=self.photo_off, bg="white", textvariable=var)
             toggle.image=self.photo_off
-            toggle.grid(row = self.N, column=0, sticky="W", padx=5*self.scale)
+            toggle.grid(row = self.N, column=0, sticky="W", padx=int(5*self.scale))
             toggle.bind("<Button-1>", self.updateToggle) 
-            lab = tk.Label(self.frm2, text=EXPANSIONS[name].Name, bg='white', font=('Helvetica',int(self.fontSize*self.scale)), textvariable=name)
+            lab = tk.Label(self.togglefrm, text=EXPANSIONS[name].Name, bg='white',\
+                    font=('Helvetica',int(self.fontSize*self.scale)), textvariable=name)
             lab.grid(row = self.N, column=1, sticky="W")
             self.N+=1
             self.toggles.append(toggle)
+            self.toggleLabels.append(lab)
             self.CheckBoxVars.append(var)
             self.MAXROW +=1
         self.ExpansionsSelected = []
-        ##################################
-        #self.CheckBoxes = []
-        #nBox = 0
-        #self.CheckBoxVars = []
-        #self.MAXROW = 4
-        #self.image_off = Image.open('./Resources/toggle_off.jpg')
-        #imageWidth = self.image_off.size[0]
-        #imageHeight = self.image_off.size[1]
-        #scale = 0.7
-        #self.image_off = self.image_off.resize((int(scale*imageWidth),int(scale*imageHeight)), Image.ANTIALIAS)
-        #self.photoA = ImageTk.PhotoImage(self.image_off)
-        #self.l = tk.Label(self.frm, image=self.photoA).grid()
-        #for name in EXPANSION_NAMES_CHR:
-        #    var = tk.IntVar()
-        #    box = tk.Checkbutton(self.frm, text= EXPANSIONS[name].Name,\
-        #            variable=var, bg='white', font=('Helvetica',int(self.fontSize*self.scale)),\
-        #            indicatoron=True, selectimage=self.photoA)
-        #    box.grid(row = 5+nBox, columnspan=1, sticky="W")
-        #    nBox+=1
-        #    self.CheckBoxes.append(box)
-        #    self.CheckBoxVars.append(var)
-        #    self.MAXROW +=1
-        #self.ExpansionsSelected = []
-        #self.lab = tk.Label(self.frm, text="Selection:", bg='pink',\
-        #        font=('Helvetica',int(self.fontSize*self.scale))).grid(row = 4, column=1, sticky="W")
-        #self.selectionPrintLabels = []
-#
+        
+        # Define card pool
+        self.CardPool = []
     def drawSample(self):
         counter = 0
-        
-    def printCheckBoxSelection(self):
-        counter = 1
-        for name in self.ExpansionsSelected:
-            if len(self.selectionPrintLabels) < counter:
-                label = tk.Label(self.frm, text = "> " + EXPANSIONS[name].Name,\
-                        font=('Helvetica',int(self.fontSize*self.scale)))
-                label.grid(row = 4+counter, column = 1, sticky='W')
-                self.selectionPrintLabels.append(label)
-            else:
-                self.selectionPrintLabels[counter-1].config(text = "> " + EXPANSIONS[name].Name,\
-                        font=('Helvetica',int(self.fontSize*self.scale)))
-    
+        self.ExpansionsSelected = []
+        self.CardPool = []
+        for label in self.toggles:
+            if label.cget("textvariable") == 1:
+                self.ExpansionsSelected.append(counter)
             counter +=1
-        if len(self.selectionPrintLabels)>(counter-1):
-            for i in range(counter-1,len(self.selectionPrintLabels)):
-                self.selectionPrintLabels[i].destroy()
-        newSelection = []
-        for i in range(0, counter-1):
-            newSelection.append(self.selectionPrintLabels[i])
-        self.selectionPrintLabels = newSelection
+        for i in self.ExpansionsSelected:
+            name = self.toggleLabels[i].cget("text")
+            print name
+            for c in CARDS:
+                if CARDS[c].expansion == name:
+                    self.CardPool.append(c)
+        # CardPool now contains the dictionary names of the selected cards. 
+        # To get more information about the cards you need to use CARDS[name]._attribute_.
+        print self.CardPool
 
+        # Now that a card pool has been selected, I need to make a selection of 10 cards.
+        # ... 
+
+        # Once this selection has been made I should show the picture of the selected cards.
+
+        
     def drawOnePic(self, name, nlabel = 0, scale = 1):
         image = Image.open(CARDS[name].imagePath)
         imageWidth = image.size[0]
@@ -141,19 +131,12 @@ class Dominion (object):
         label = tk.Label(self.frm, image=photo)
         label.image = photo
         if len(self.labels) == 0:
-            label.grid(row = 2, column = 0, columnspan = 2, padx=15)
+            label.grid(row = 2, column = 0, columnspan = 2, padx=int(self.scale*15),pady=int(self.scale*5))
             self.labels.append(label)
         else:
             self.labels[nlabel].configure(image = photo)
-    def drawAllPics(self):
-        for name in CARDNAMES:
-            image = Image.open(CARDS[name].imagePath)
-            photo = ImageTk.PhotoImage(image)
-            label = tk.Label(self.frm, image=photo)
-            label.image = photo
-            #label.pack(side=tk.BOTTOM)
-            self.labels.append(label)
-
+    def drawSelection(self):
+        a = 0
     def updateCardPreview(self):
         self.drawOnePic(self.OM_var.get(), 0, self.scale*self.imageScale)
         self.frm.update_idletasks()
@@ -168,9 +151,6 @@ class Dominion (object):
             l.configure(image=self.photo_on)
             l.configure(textvariable = 1) 
         
-        # Code to update selection here. ST everytime a toggle is changed,
-        # the selection is automatically updated.
-        # actually I don't think I need that, the button press just needs to go through all the labels and get the textvariable value to determine which one is added.
 
     def run(self):
         self.button = tk.Button(self.frm, text='Update Preview',\

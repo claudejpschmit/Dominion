@@ -35,31 +35,31 @@ Dominion_base_cards = {
         'Workshop':         CARD(3, "Base", "Action", './pictures/dominion/workshop.jpg')
         }
 Intrigue_cards = {
-        'Baron':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/baron.jpg'),
-        'Bridge':      CARD(4, "Intrigue", "Action", './pictures/Intrigue/bridge.jpg'),
-        'Conspirator':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/conspirator.jpg'),
-        'Coppersmith':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/coppersmith.jpg'),
-        'Courtyard':       CARD(2, "Intrigue", "Action", './pictures/Intrigue/courtyard.jpg'),
-        'Duke':       CARD(5, "Intrigue", "Victory", './pictures/Intrigue/duke.jpg'),
-        'GreatHall':       CARD(3, "Intrigue", "Action - Victory", './pictures/Intrigue/greathall.jpg'),
-        'Harem':       CARD(6, "Intrigue", "Treasure - Victory", './pictures/Intrigue/harem.jpg'),
-        'Ironworks':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/ironworks.jpg'),
+        'Baron':            CARD(4, "Intrigue", "Action", './pictures/Intrigue/baron.jpg'),
+        'Bridge':           CARD(4, "Intrigue", "Action", './pictures/Intrigue/bridge.jpg'),
+        'Conspirator':      CARD(4, "Intrigue", "Action", './pictures/Intrigue/conspirator.jpg'),
+        'Coppersmith':      CARD(4, "Intrigue", "Action", './pictures/Intrigue/coppersmith.jpg'),
+        'Courtyard':        CARD(2, "Intrigue", "Action", './pictures/Intrigue/courtyard.jpg'),
+        'Duke':             CARD(5, "Intrigue", "Victory", './pictures/Intrigue/duke.jpg'),
+        'GreatHall':        CARD(3, "Intrigue", "Action - Victory", './pictures/Intrigue/greathall.jpg'),
+        'Harem':            CARD(6, "Intrigue", "Treasure - Victory", './pictures/Intrigue/harem.jpg'),
+        'Ironworks':        CARD(4, "Intrigue", "Action", './pictures/Intrigue/ironworks.jpg'),
         'Masquerade':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/masquerade.jpg'),
-        'MiningVillage':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/miningvillage.jpg'),
-        'Minion':       CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/minion.jpg'),
-        'Nobles':       CARD(6, "Intrigue", "Action - Victory", './pictures/Intrigue/nobles.jpg'),
-        'Pawn':       CARD(2, "Intrigue", "Action", './pictures/Intrigue/pawn.jpg'),
-        'Saboteur':       CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/saboteur.jpg'),
-        'Scout':       CARD(4, "Intrigue", "Action", './pictures/Intrigue/scout.jpg'),
-        'SecretChamber':       CARD(2, "Intrigue", "Action - Reaction", './pictures/Intrigue/secretchamber.jpg'),
+        'MiningVillage':    CARD(4, "Intrigue", "Action", './pictures/Intrigue/miningvillage.jpg'),
+        'Minion':           CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/minion.jpg'),
+        'Nobles':           CARD(6, "Intrigue", "Action - Victory", './pictures/Intrigue/nobles.jpg'),
+        'Pawn':             CARD(2, "Intrigue", "Action", './pictures/Intrigue/pawn.jpg'),
+        'Saboteur':         CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/saboteur.jpg'),
+        'Scout':            CARD(4, "Intrigue", "Action", './pictures/Intrigue/scout.jpg'),
+        'SecretChamber':    CARD(2, "Intrigue", "Action - Reaction", './pictures/Intrigue/secretchamber.jpg'),
         'ShantyTown':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/shantytown.jpg'),
-        'Steward':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/steward.jpg'),
-        'Swindler':       CARD(3, "Intrigue", "Action - Attack", './pictures/Intrigue/swindler.jpg'),
-        'Torturer':       CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/torturer.jpg'),
-        'TradingPost':       CARD(5, "Intrigue", "Action", './pictures/Intrigue/tradingpost.jpg'),
-        'Tribute':       CARD(5, "Intrigue", "Action", './pictures/Intrigue/tribute.jpg'),
-        'Upgrade':       CARD(5, "Intrigue", "Action", './pictures/Intrigue/upgrade.jpg'),
-        'WishingWell':       CARD(3, "Intrigue", "Action", './pictures/Intrigue/wishingwell.jpg')
+        'Steward':          CARD(3, "Intrigue", "Action", './pictures/Intrigue/steward.jpg'),
+        'Swindler':         CARD(3, "Intrigue", "Action - Attack", './pictures/Intrigue/swindler.jpg'),
+        'Torturer':         CARD(5, "Intrigue", "Action - Attack", './pictures/Intrigue/torturer.jpg'),
+        'TradingPost':      CARD(5, "Intrigue", "Action", './pictures/Intrigue/tradingpost.jpg'),
+        'Tribute':          CARD(5, "Intrigue", "Action", './pictures/Intrigue/tribute.jpg'),
+        'Upgrade':          CARD(5, "Intrigue", "Action", './pictures/Intrigue/upgrade.jpg'),
+        'WishingWell':      CARD(3, "Intrigue", "Action", './pictures/Intrigue/wishingwell.jpg')
         }
 
 # ADD all expansions to the CARDS dictionary.
@@ -78,16 +78,16 @@ EXPANSION = namedtuple("EXPANSION", "Name Number StandAlone Year Description")
 EXPANSIONS = {
         'Base':         EXPANSION("Base", 1, True, 2008, "The Dominion base game."), 
         'Intrigue':     EXPANSION("Intrigue", 2, True, 2009, "The First Expansion."), 
-        'Seaside':      EXPANSION("Seaside", 3, False, 2009, "The Dominion base game."), 
-        'Alchemy':      EXPANSION("Alchemy", 4, False, 2010, "The Dominion base game."),
-        'Prosperity':   EXPANSION("Prosperity", 5, False, 2010, "The Dominion base game."), 
-        'Cornucopia':   EXPANSION("Cornucopia", 6, False, 2011, "The Dominion base game."), 
-        'Hinterlands':  EXPANSION("Hinterlands", 7, False, 2011, "The Dominion base game."), 
-        'DarkAges':     EXPANSION("Dark Ages", 8, False, 2012, "The Dominion base game."), 
-        'Guilds':       EXPANSION("Guilds", 9, False, 2013, "The Dominion base game."), 
-        'Adventures':   EXPANSION("Adventures", 10, False, 2015, "The Dominion base game."),
-        'Empires':      EXPANSION("Empires", 11, False, 2016, "The Dominion base game."), 
-        'Nocturne':     EXPANSION("Nocturne", 12, False, 2017, "The Dominion base game.") 
+        'Seaside':      EXPANSION("Seaside", 3, False, 2009, "The Second Expansion."), 
+        'Alchemy':      EXPANSION("Alchemy", 4, False, 2010, "The Third Expansion."),
+        'Prosperity':   EXPANSION("Prosperity", 5, False, 2010, "The Fourth Expansion."), 
+        'Cornucopia':   EXPANSION("Cornucopia", 6, False, 2011, "The Fifth Expansion."), 
+        'Hinterlands':  EXPANSION("Hinterlands", 7, False, 2011, "The Sixth Expansion."), 
+        'DarkAges':     EXPANSION("Dark Ages", 8, False, 2012, "The Seventh Expansion."), 
+        'Guilds':       EXPANSION("Guilds", 9, False, 2013, "The Eigth Expansion."), 
+        'Adventures':   EXPANSION("Adventures", 10, False, 2015, "The Ninth Expansion."),
+        'Empires':      EXPANSION("Empires", 11, False, 2016, "The Tenth Expansion."), 
+        'Nocturne':     EXPANSION("Nocturne", 12, False, 2017, "The Eleventh Expansion.") 
         }
 
 tmp = []
