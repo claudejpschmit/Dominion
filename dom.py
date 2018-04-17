@@ -2,12 +2,14 @@ import Tkinter as tk
 from PIL import Image, ImageTk
 from Libraries import *
 import random as rd
+import sys
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
-        self.scale = 2
+        self.scale = 1
         self.root.tk.call('tk', 'scaling', self.scale)
         self.fontSize = 8
+        self.root.bind("<Escape>", self._close)
         self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1000))
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)
@@ -134,6 +136,9 @@ class Dominion (object):
         self.displayfrm = tk.Frame(self.cnv, bg='blue')
         self.cnv.create_window(self.frm.winfo_reqwidth(),0,\
                 window=self.displayfrm,anchor='nw')
+    def _close(self,event):
+        self.root.withdraw()
+        sys.exit()
 
     def _on_mousewheel_up(self, event):
         self.cnv.yview_scroll(-1*(event.delta/120),"units")
@@ -174,12 +179,24 @@ class Dominion (object):
             if indexFound:
                 chosenIndecies.append(Rnum)
                 self.CardSelection.append(self.CardPool[Rnum])
+        # Now let's sort the selection according to cost and name
+        CARDS_selected = []
+        for name in self.CardSelection:
+            CARDS_selected.append((CARDS[name], name))
+        CARDS_selected = sorted(sorted(CARDS_selected, key=lambda c: c[0].name),\
+                key = lambda c: c[0].cost)
+        newSelec = []
+        for c in CARDS_selected:
+            newSelec.append(c[1])
+        self.CardSelection = newSelec
 
         # Once this selection has been made I should show the picture of the selected cards.
         self.displaySelection()
     def displaySelection(self):
         imageList = []
-        scale = 0.7 
+        scale = 0.7*self.scale
+        # This should display cards in ascending order of cost and in alphabetical order.
+
         for name in self.CardSelection:
             image = Image.open(CARDS[name].imagePath)
             imageWidth = image.size[0]
@@ -213,8 +230,6 @@ class Dominion (object):
             self.labels.append(label)
         else:
             self.labels[nlabel].configure(image = photo)
-    def drawSelection(self):
-        a = 0
     def updateCardPreview(self):
         self.drawOnePic(self.OM_var.get(), 0, self.scale*self.imageScale)
         self.frm.update_idletasks()
