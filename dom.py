@@ -7,7 +7,7 @@ class Dominion (object):
         self.root=tk.Tk()
         self.scale = 1.5
         self.root.tk.call('tk', 'scaling', self.scale)
-        self.fontSize = 6
+        self.fontSize = 8
         self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1000))
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)
@@ -41,7 +41,10 @@ class Dominion (object):
         self.OM_var.set(CARDNAMES[0])
         self.OM = apply(tk.OptionMenu, (self.frm, self.OM_var) + tuple(CARDNAMES))
         self.OM.config(bg='white', width=10, font=('Helvetica',int(self.fontSize*self.scale)))
+        self.men = self.OM.nametowidget(self.OM.menuname)
+        self.men.configure(font=('Helvetica',int(self.fontSize*self.scale)))
         self.OM.grid(row = 1, column = 0)
+
 
         # Generate some Title text
         self.titleLabel = tk.Label(self.frm, text="DOMINION - Card Randomizer",\
