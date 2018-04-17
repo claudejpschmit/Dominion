@@ -61,6 +61,32 @@ Intrigue_cards = {
         'Upgrade':          CARD(5, "Intrigue", "Action", './pictures/Intrigue/upgrade.jpg'),
         'WishingWell':      CARD(3, "Intrigue", "Action", './pictures/Intrigue/wishingwell.jpg')
         }
+Seaside_cards = {
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Bazaar':           CARD(5, "Seaside", "Action", './pictures/seaside/bazaar.jpg'),
+        'Caravan':          CARD(4, "Seaside", "Action - Duration", './pictures/seaside/caravan.jpg'),
+        'Cutpurse':         CARD(4, "Seaside", "Action - Attack", './pictures/seaside/cutpurse.jpg'),
+        'Embargo':          CARD(2, "Seaside", "Action", './pictures/seaside/embargo.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
+        'Ambassador':       CARD(3, "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg')
+        }
 
 # ADD all expansions to the CARDS dictionary.
 CARDS.update(Dominion_base_cards)
