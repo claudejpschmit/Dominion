@@ -90,7 +90,7 @@ CARDS.update(Intrigue_cards)
 # Make a list with all the card names in alphabetical order.
 CARDNAMES = []
 for name in CARDS:
-    CARDNAMES.append(name)
+    CARDNAMES.append(CARDS[name].name)
 CARDNAMES.sort()
 
 # Make a dict of all the Dominion Expansions with some descriptive attributes

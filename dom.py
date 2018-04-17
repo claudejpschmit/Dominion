@@ -84,8 +84,6 @@ class Dominion (object):
                 int(A*self.toggleHeight)), Image.ANTIALIAS)
         self.photo_on = ImageTk.PhotoImage(self.image_on)
         self.photo_off = ImageTk.PhotoImage(self.image_off)
-        #self.toggleLabel = tk.Label(self.frm,image=self.image_off)
-        #self.toggleLabel.image=self.image_off
 
         self.togglefrm = tk.Frame(self.frm, height=100,width=300,bg="white")
         self.togglefrm.grid(row=5,column =0, sticky="W", pady=int(5*self.scale))
@@ -109,6 +107,8 @@ class Dominion (object):
             self.toggleLabels.append(lab)
             self.CheckBoxVars.append(var)
             self.MAXROW +=1
+
+        # Define Variable for which expansions have been selected.
         self.ExpansionsSelected = []
         
         # Define card pool
@@ -136,10 +136,10 @@ class Dominion (object):
         self.displayfrm = tk.Frame(self.cnv, bg='blue')
         self.cnv.create_window(self.frm.winfo_reqwidth(),0,\
                 window=self.displayfrm,anchor='nw')
+
     def _close(self,event):
         self.root.withdraw()
         sys.exit()
-
     def _on_mousewheel_up(self, event):
         self.cnv.yview_scroll(-1*(event.delta/120),"units")
     def _on_mousewheel_down(self, event):
@@ -166,6 +166,8 @@ class Dominion (object):
         # Now that a card pool has been selected, I need to make a selection of 10 cards.
         # ... 
         chosenIndecies = []
+        # While less than 10 cards have been found select a random one from the card
+        # pool and make sure it hasn't been selected before.
         while len(self.CardSelection) < 10:
             Rnum = rd.randint(0,len(self.CardPool)-1)
             indexFound = False
@@ -179,6 +181,7 @@ class Dominion (object):
             if indexFound:
                 chosenIndecies.append(Rnum)
                 self.CardSelection.append(self.CardPool[Rnum])
+
         # Now let's sort the selection according to cost and name
         CARDS_selected = []
         for name in self.CardSelection:
@@ -192,6 +195,7 @@ class Dominion (object):
 
         # Once this selection has been made I should show the picture of the selected cards.
         self.displaySelection()
+
     def displaySelection(self):
         imageList = []
         scale = 0.7*self.scale
