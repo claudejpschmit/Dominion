@@ -26,12 +26,7 @@ class Dominion (object):
         self.imageScale = 0.7 
         
         
-        self.displayfrm = tk.Frame(self.cnv, bg='blue')
-        self.cnv.create_window(self.scale*485,0,window=self.displayfrm,anchor='nw')
-        self.titleLabel = tk.Label(self.displayfrm, text="DOMINION - Card Randomizer",\
-            bg='black',fg='white', font=('Helvetica',int(self.fontSize*self.scale)))
-        self.titleLabel.grid(row=0, columnspan=2)
-
+        
         
         
         
@@ -101,6 +96,31 @@ class Dominion (object):
         
         # Define card pool
         self.CardPool = []
+
+        # Make some Buttons inside frame 1
+        self.button = tk.Button(self.frm, text='Update Preview',\
+                command=self.updateCardPreview, font=('Helvetica',int(self.fontSize*self.scale)))
+        self.button.grid(row=1, column = 1)
+        self.drawOnePic(self.OM_var.get(), scale = self.imageScale*self.scale)
+        
+        self.button2 = tk.Button(self.frm, text='Draw Sample',\
+                command=self.drawSample, font=('Helvetica',int(self.fontSize*self.scale)))
+        self.button2.grid(row=self.MAXROW+1, columnspan = 2)
+        self.MAXROW+=1
+
+        self.frm.update_idletasks()
+
+        # make second frame
+        self.displayfrm = tk.Frame(self.cnv, bg='blue')
+        print self.frm.winfo_width()
+        print self.frm.winfo_height()
+        #self.cnv.create_window(self.scale*485,0,window=self.displayfrm,anchor='nw'
+        self.cnv.create_window(self.frm.winfo_reqwidth(),0,window=self.displayfrm,anchor='nw')
+        self.titleLabel = tk.Label(self.displayfrm, text="DOMINION - Card Randomizer",\
+            bg='black',fg='white', font=('Helvetica',int(self.fontSize*self.scale)))
+        self.titleLabel.grid(row=0, columnspan=2)
+
+
     def drawSample(self):
         counter = 0
         self.ExpansionsSelected = []
@@ -156,16 +176,7 @@ class Dominion (object):
         
 
     def run(self):
-        self.button = tk.Button(self.frm, text='Update Preview',\
-                command=self.updateCardPreview, font=('Helvetica',int(self.fontSize*self.scale)))
-        self.button.grid(row=1, column = 1)
-        self.drawOnePic(self.OM_var.get(), scale = self.imageScale*self.scale)
-        
-        self.button2 = tk.Button(self.frm, text='Draw Sample',\
-                command=self.drawSample, font=('Helvetica',int(self.fontSize*self.scale)))
-        self.button2.grid(row=self.MAXROW+1, columnspan = 2)
-        self.MAXROW+=1
-        #----- Resize window ------#
+                #----- Resize window ------#
         self.frm.update_idletasks()
         self.cnv.configure(scrollregion=(0,0,self.frm.winfo_width(), self.frm.winfo_height()))
         self.root.mainloop()
