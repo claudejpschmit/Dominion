@@ -348,7 +348,7 @@ class Dominion (object):
         pass
     def displaySelection(self):
         imageList = []
-        scale = 0.7*self.scale
+        scale = self.imageScale*self.scale
         # This should display cards in ascending order of cost and in alphabetical order.
 
         for name in self.CardSelection:
