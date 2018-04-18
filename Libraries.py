@@ -22,7 +22,7 @@ Dominion_base_cards = {
         'Market':           CARD(5, "Market", "Base", "Action", './pictures/dominion/market.jpg'),
         'Militia':          CARD(4, "Militia", "Base", "Action - Attack", './pictures/dominion/militia.jpg'),
         'Mine':             CARD(5, "Mine", "Base", "Action", './pictures/dominion/mine.jpg'),
-        'Moat':             CARD(2, "Moat", "Base", "Action - Reaction", './pictures/dominion/mine.jpg'),
+        'Moat':             CARD(2, "Moat", "Base", "Action - Reaction", './pictures/dominion/moat.jpg'),
         'Moneylender':      CARD(4, "Moneylender", "Base", "Action", './pictures/dominion/moneylender.jpg'),
         'Remodel':          CARD(4, "Remodel", "Base", "Action", './pictures/dominion/remodel.jpg'),
         'Smithy':           CARD(4, "Smithy", "Base", "Action", './pictures/dominion/smithy.jpg'),
@@ -33,7 +33,7 @@ Dominion_base_cards = {
         'Witch':            CARD(5, "Witch", "Base", "Action - Attack", './pictures/dominion/witch.jpg'),
         'Woodcutter':       CARD(3, "Woodcutter", "Base", "Action", './pictures/dominion/woodcutter.jpg'),
         'Workshop':         CARD(3, "Workshop", "Base", "Action", './pictures/dominion/workshop.jpg')
-        }
+}
 Intrigue_cards = {
         'Baron':            CARD(4, "Baron", "Intrigue", "Action", './pictures/Intrigue/baron.jpg'),
         'Bridge':           CARD(4, "Bridge", "Intrigue", "Action", './pictures/Intrigue/bridge.jpg'),
@@ -60,32 +60,40 @@ Intrigue_cards = {
         'Tribute':          CARD(5, "Tribute", "Intrigue", "Action", './pictures/Intrigue/tribute.jpg'),
         'Upgrade':          CARD(5, "Upgrade", "Intrigue", "Action", './pictures/Intrigue/upgrade.jpg'),
         'WishingWell':      CARD(3, "Wishing Well", "Intrigue", "Action", './pictures/Intrigue/wishingwell.jpg')
-        }
+}
 Seaside_cards = {
         'Ambassador':       CARD(3, "Ambassador", "Seaside", "Action - Attack", './pictures/seaside/ambassador.jpg'),
         'Bazaar':           CARD(5, "Bazaar", "Seaside", "Action", './pictures/seaside/bazaar.jpg'),
         'Caravan':          CARD(4, "Caravan", "Seaside", "Action - Duration", './pictures/seaside/caravan.jpg'),
         'Cutpurse':         CARD(4, "Cutpurse", "Seaside", "Action - Attack", './pictures/seaside/cutpurse.jpg'),
         'Embargo':          CARD(2, "Embargo", "Seaside", "Action", './pictures/seaside/embargo.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        'Ambassador':       CARD(3, "", "Seaside", "Action - Attack", './pictures/seaside/.jpg'),
-        }
+        'Explorer':         CARD(5, "Explorer", "Seaside", "Action", './pictures/seaside/explorer.jpg'),
+        'FishingVillage':   CARD(3, "Fishing Village", "Seaside", "Action - Duration", './pictures/seaside/fishingvillage.jpg'),
+        'GhostShip':        CARD(5, "Ghost Ship", "Seaside", "Action - Attack", './pictures/seaside/ghostship.jpg'),
+        'Haven':            CARD(2, "Haven", "Seaside", "Action - Duration", './pictures/seaside/haven.jpg'),
+        'Island':           CARD(4, "Island", "Seaside", "Action - Victory", './pictures/seaside/island.jpg'),
+        'Lighthouse':       CARD(2, "Lighthouse", "Seaside", "Action - Duration", './pictures/seaside/lighthouse.jpg'),
+        'Lookout':          CARD(3, "Lookout", "Seaside", "Action", './pictures/seaside/lookout.jpg'),
+        'MerchantShip':     CARD(5, "Merchant Ship", "Seaside", "Action - Duration", './pictures/seaside/merchantship.jpg'),
+        'NativeVillage':    CARD(2, "Native Village", "Seaside", "Action", './pictures/seaside/nativevillage.jpg'),
+        'Navigator':        CARD(4, "Navigator", "Seaside", "Action", './pictures/seaside/navigator.jpg'),
+        'Outpost':          CARD(5, "Outpost", "Seaside", "Action - Duration", './pictures/seaside/outpost.jpg'),
+        'PearlDiver':       CARD(2, "Pearl Diver", "Seaside", "Action", './pictures/seaside/pearldiver.jpg'),
+        'PirateShip':       CARD(4, "Pirate Ship", "Seaside", "Action - Attack", './pictures/seaside/pirateship.jpg'),
+        'Salvager':         CARD(4, "Salvager", "Seaside", "Action", './pictures/seaside/salvager.jpg'),
+        'SeaHag':           CARD(4, "Sea Hag", "Seaside", "Action - Attack", './pictures/seaside/seahag.jpg'),
+        'Smuggler':         CARD(3, "Smuggler", "Seaside", "Action", './pictures/seaside/smugglers.jpg'),
+        'Tactition':        CARD(5, "Tactition", "Seaside", "Action - Duration", './pictures/seaside/tactician.jpg'),
+        'TreasureMap':      CARD(4, "Treasure Map", "Seaside", "Action", './pictures/seaside/treasuremap.jpg'),
+        'Treasury':         CARD(5, "Treasury", "Seaside", "Action", './pictures/seaside/treasury.jpg'),
+        'Warehouse':        CARD(3, "Warehouse", "Seaside", "Action", './pictures/seaside/warehouse.jpg'),
+        'Wharf':            CARD(5, "Wharf", "Seaside", "Action - Duration", './pictures/seaside/wharf.jpg')
+}
 
 # ADD all expansions to the CARDS dictionary.
 CARDS.update(Dominion_base_cards)
 CARDS.update(Intrigue_cards)
+CARDS.update(Seaside_cards)
 
 # Make a list with all the card names in alphabetical order.
 CARDNAMES = []

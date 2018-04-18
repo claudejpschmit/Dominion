@@ -3,6 +3,12 @@ from PIL import Image, ImageTk
 from Libraries import *
 import random as rd
 import sys
+
+
+# Maybe a better design philosophy is that _init_ doesnt create all the buttonss and things, but 
+# instead just calls functions that create these things. That way it should be a bit cleaner and easier to 
+# look at.
+
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
@@ -10,15 +16,17 @@ class Dominion (object):
         self.root.tk.call('tk', 'scaling', self.scale)
         self.fontSize = 8
         self.root.bind("<Escape>", self._close)
-        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1000))
+        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*500))
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)
         self.root.grid_columnconfigure(0,weight=1)
         self.cnv = tk.Canvas(self.root)
         self.cnv.grid(row=0,column=0,sticky='nswe')
+
         self.hScroll = tk.Scrollbar(self.root, orient=tk.HORIZONTAL,\
                 command = self.cnv.xview, width = int(self.scale*16))
         self.hScroll.grid(row=1, column=0, sticky='we')
+        
         self.vScroll = tk.Scrollbar(self.root, orient=tk.VERTICAL,\
                 command = self.cnv.yview, width = int(self.scale*16))
         self.vScroll.grid(row=0, column=1, sticky='ns')
@@ -26,17 +34,81 @@ class Dominion (object):
                 yscrollcommand=self.vScroll.set)
         self.frm = tk.Frame(self.cnv, bg='white')
         self.cnv.create_window(0,0,window=self.frm,anchor='nw')
-        self.imageScale = 0.7 
+        self.imageScale = 0.8
+
         self.cnv.bind_all("<Button-4>", self._on_mousewheel_up)
         self.cnv.bind_all("<Button-5>", self._on_mousewheel_down)
-
-        
-        
-        
         
         
         # Initializing Basic Window 
+
+        # Make menubar, toolbar and statusbar
+        self.__createMenuBar__()
+        self.__createToolBar__()
+        self.__createStatusBar__()
+
         # Make dropdown Menu with all Cardnames.
+        self.__createCardViewerMenu__()
+
+        # Generate some Title text
+        self.__createTitle__()
+                
+        # Generate Checkboxes for expansions
+        self.__createExpansionCheckboxes__()
+        
+        # Define Variable for which expansions have been selected.
+        self.ExpansionsSelected = []
+        
+        # Define card pool
+        self.CardPool = []
+
+        # Define card selection
+        self.CardSelection = []
+
+        # Make some Buttons inside frame 1
+        self.__createCardViewerButton__()
+        self.__createDrawSampleButton__()
+        self.MAXROW+=1
+    
+        # Display previe pic
+        self.drawOnePic(self.OM_var.get(), scale = self.imageScale*self.scale)
+        
+        # A geometry update
+        self.frm.update_idletasks()
+
+        # make second frame to display the selection.
+        self.displayfrm = tk.Frame(self.cnv, bg='blue')
+        self.cnv.create_window(self.frm.winfo_reqwidth(),0,\
+                window=self.displayfrm,anchor='nw')
+    def doNothing(self):
+        pass
+
+    def __createMenuBar__(self):
+        self.menu = tk.Menu(self.root)
+        self.root.config(menu=self.menu)
+        self.subMenu1 = tk.Menu(self.menu)
+        self.menu.add_cascade(label="Menu 1", menu=self.subMenu1)
+        self.subMenu1.add_command(label="Command 1", command=self.doNothing)
+        self.subMenu1.add_command(label="Command 2", command=self.doNothing)
+        self.subMenu1.add_command(label="Command 3", command=self.doNothing)
+        self.subMenu1.add_separator()
+        self.subMenu1.add_command(label="Command 4", command=self.doNothing)
+
+        self.subMenu2 = tk.Menu(self.menu)
+        self.menu.add_cascade(label="Menu 2", menu=self.subMenu2)
+        self.subMenu2.add_command(label="Command 1", command=self.doNothing)
+        self.subMenu2.add_command(label="Command 2", command=self.doNothing)
+        self.subMenu2.add_command(label="Command 3", command=self.doNothing)
+        self.subMenu2.add_separator()
+        self.subMenu2.add_command(label="Command 4", command=self.doNothing)
+
+    def __createToolBar__(self):
+        pass
+    def __createStatusBar__(self):
+        self.status = tk.Label(self.root, text = " ... Go nuts with the randomizer! ... ",\
+                bd = 1, relief=tk.SUNKEN, anchor = tk.W, width = int(self.scale*1920))
+        self.status.grid(columnspan=10)
+    def __createCardViewerMenu__(self):
         self.OM_var = tk.StringVar(self.root)
         self.OM_var.set(CARDNAMES[0])
         self.OM = apply(tk.OptionMenu, (self.frm, self.OM_var) +\
@@ -46,15 +118,12 @@ class Dominion (object):
         self.men = self.OM.nametowidget(self.OM.menuname)
         self.men.configure(font=('Helvetica',int(self.fontSize*self.scale)))
         self.OM.grid(row = 1, column = 0)
-
-
-        # Generate some Title text
+    def __createTitle__(self):
         self.titleLabel = tk.Label(self.frm, text="DOMINION - Card Randomizer",\
                 bg='blue', fg='white', font=('Helvetica',\
                 int(self.fontSize*self.scale)))
         self.titleLabel.grid(row=0, columnspan=2, pady = int(self.scale*10))
-        
-        # Generate Checkboxes for expansions
+    def __createExpansionCheckboxes__(self):
         self.Descr = tk.Label(self.frm,\
                 text="Check Expansions from which cards will be picked.",\
                 bg='blue', fg='white', font=('Helvetica',int(self.fontSize*\
@@ -67,7 +136,6 @@ class Dominion (object):
                 font=('Helvetica',int(self.fontSize*self.scale))).grid(row = 4,\
                 column=1, sticky="W")
 
-        ###################
         self.toggles = []
         nBox = 0
         self.CheckBoxVars = []
@@ -107,43 +175,28 @@ class Dominion (object):
             self.toggleLabels.append(lab)
             self.CheckBoxVars.append(var)
             self.MAXROW +=1
-
-        # Define Variable for which expansions have been selected.
-        self.ExpansionsSelected = []
-        
-        # Define card pool
-        self.CardPool = []
-
-        # Define card selection
-        self.CardSelection = []
-
-        # Make some Buttons inside frame 1
+            
+    def __createCardViewerButton__(self):
         self.button = tk.Button(self.frm, text='Update Preview',\
                 command=self.updateCardPreview, font=('Helvetica',\
                 int(self.fontSize*self.scale)))
         self.button.grid(row=1, column = 1)
-        self.drawOnePic(self.OM_var.get(), scale = self.imageScale*self.scale)
-        
+
+    def __createDrawSampleButton__(self):
         self.button2 = tk.Button(self.frm, text='Draw Sample',\
                 command=self.drawSample, font=('Helvetica',\
                 int(self.fontSize*self.scale)))
         self.button2.grid(row=self.MAXROW+1, columnspan = 2)
-        self.MAXROW+=1
-
-        self.frm.update_idletasks()
-
-        # make second frame to display the selection.
-        self.displayfrm = tk.Frame(self.cnv, bg='blue')
-        self.cnv.create_window(self.frm.winfo_reqwidth(),0,\
-                window=self.displayfrm,anchor='nw')
 
     def _close(self,event):
         self.root.withdraw()
         sys.exit()
+        
     def _on_mousewheel_up(self, event):
-        self.cnv.yview_scroll(-1*(event.delta/120),"units")
+        self.cnv.yview_scroll(-2,"units")
+         
     def _on_mousewheel_down(self, event):
-        self.cnv.yview_scroll(-1*(event.delta/120),"units")
+        self.cnv.yview_scroll(2,"units")
 
     def drawSample(self):
         counter = 0
@@ -217,10 +270,13 @@ class Dominion (object):
                     padx=int(self.scale*15),pady=int(self.scale*5))
             imageList[i+5].grid(row = 3, column = i, columnspan = 1,\
                     padx=int(self.scale*15),pady=int(self.scale*5))
-
         
     def drawOnePic(self, name, nlabel = 0, scale = 1):
-        image = Image.open(CARDS[name].imagePath)
+        picName = ''
+        for n in CARDS:
+            if CARDS[n].name == name:
+                picName = n
+        image = Image.open(CARDS[picName].imagePath)
         imageWidth = image.size[0]
         imageHeight = image.size[1]
         image = image.resize((int(scale*imageWidth),int(scale*imageHeight)),\
@@ -234,6 +290,7 @@ class Dominion (object):
             self.labels.append(label)
         else:
             self.labels[nlabel].configure(image = photo)
+
     def updateCardPreview(self):
         self.drawOnePic(self.OM_var.get(), 0, self.scale*self.imageScale)
         self.frm.update_idletasks()
@@ -248,7 +305,6 @@ class Dominion (object):
         else:
             l.configure(image=self.photo_on)
             l.configure(textvariable = 1) 
-        
 
     def run(self):
                 #----- Resize window ------#
