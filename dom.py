@@ -16,7 +16,7 @@ class Dominion (object):
         self.root.tk.call('tk', 'scaling', self.scale)
         self.fontSize = 8
         self.root.bind("<Escape>", self._close)
-        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*500))
+        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1000))
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)
         self.root.grid_columnconfigure(0,weight=1)
@@ -55,7 +55,9 @@ class Dominion (object):
                 
         # Generate Checkboxes for expansions
         self.__createExpansionCheckboxes__()
-        
+         # Generate Checkboxes for options
+        self.__createOptionsCheckboxes__()
+
         # Define Variable for which expansions have been selected.
         self.ExpansionsSelected = []
         
@@ -93,7 +95,7 @@ class Dominion (object):
         self.subMenu1.add_command(label="Command 3", command=self.doNothing)
         self.subMenu1.add_separator()
         self.subMenu1.add_command(label="Command 4", command=self.doNothing)
-
+        
         self.subMenu2 = tk.Menu(self.menu)
         self.menu.add_cascade(label="Menu 2", menu=self.subMenu2)
         self.subMenu2.add_command(label="Command 1", command=self.doNothing)
@@ -104,10 +106,12 @@ class Dominion (object):
 
     def __createToolBar__(self):
         pass
+
     def __createStatusBar__(self):
         self.status = tk.Label(self.root, text = " ... Go nuts with the randomizer! ... ",\
                 bd = 1, relief=tk.SUNKEN, anchor = tk.W, width = int(self.scale*1920))
         self.status.grid(columnspan=10)
+
     def __createCardViewerMenu__(self):
         self.OM_var = tk.StringVar(self.root)
         self.OM_var.set(CARDNAMES[0])
@@ -118,11 +122,13 @@ class Dominion (object):
         self.men = self.OM.nametowidget(self.OM.menuname)
         self.men.configure(font=('Helvetica',int(self.fontSize*self.scale)))
         self.OM.grid(row = 1, column = 0)
+
     def __createTitle__(self):
         self.titleLabel = tk.Label(self.frm, text="DOMINION - Card Randomizer",\
                 bg='blue', fg='white', font=('Helvetica',\
                 int(self.fontSize*self.scale)))
         self.titleLabel.grid(row=0, columnspan=2, pady = int(self.scale*10))
+
     def __createExpansionCheckboxes__(self):
         self.Descr = tk.Label(self.frm,\
                 text="Check Expansions from which cards will be picked.",\
@@ -175,7 +181,47 @@ class Dominion (object):
             self.toggleLabels.append(lab)
             self.CheckBoxVars.append(var)
             self.MAXROW +=1
-            
+    
+    def __createOptionsCheckboxes__(self):
+        self.togglesOptions = []
+        nBox = 0
+        self.CheckBoxVarsOptions = []
+
+        self.image_on = Image.open('./Resources/toggle_on.gif')
+        self.image_off = Image.open('./Resources/toggle_off.gif')
+        self.toggleWidth = self.image_on.size[0]
+        self.toggleHeight = self.image_on.size[1]
+        A = 0.25 * self.scale
+        self.image_on = self.image_on.resize((int(A*self.toggleWidth),\
+                int(A*self.toggleHeight)), Image.ANTIALIAS)
+        self.image_off = self.image_off.resize((int(A*self.toggleWidth),\
+                int(A*self.toggleHeight)), Image.ANTIALIAS)
+        self.photo_on = ImageTk.PhotoImage(self.image_on)
+        self.photo_off = ImageTk.PhotoImage(self.image_off)
+
+        self.togglefrmOptions = tk.Frame(self.frm, height=100,width=300,bg="white")
+        self.togglefrmOptions.grid(row=5,column = 1, sticky="NW", pady=int(5*self.scale))
+
+        self.N = 0
+        self.toggleLabelsOptions = []
+        self.Options = ['Curve', 'High Interaction', 'Suggested Sets']
+        for name in self.Options:
+            var = tk.IntVar(value=0)
+            toggle = tk.Label(self.togglefrmOptions,image=self.photo_off, bg="white",\
+                    textvariable=var)
+            toggle.image=self.photo_off
+            toggle.grid(row = self.N, column=0, sticky="W",\
+                    padx=int(5*self.scale))
+            toggle.bind("<Button-1>", self.updateToggle) 
+            lab = tk.Label(self.togglefrmOptions, text=name,\
+                    bg='white', font=('Helvetica',int(self.fontSize*self.scale)),\
+                    textvariable=name)
+            lab.grid(row = self.N, column=1, sticky="W")
+            self.N+=1
+            self.togglesOptions.append(toggle)
+            self.toggleLabelsOptions.append(lab)
+            self.CheckBoxVarsOptions.append(var)
+
     def __createCardViewerButton__(self):
         self.button = tk.Button(self.frm, text='Update Preview',\
                 command=self.updateCardPreview, font=('Helvetica',\
@@ -212,6 +258,19 @@ class Dominion (object):
             for c in CARDS:
                 if CARDS[c].expansion == name:
                     self.CardPool.append(c)
+
+        # Use options information 
+        counter = 0
+        self.OptionsSelected = []
+        for label in self.togglesOptions:
+            if label.cget("textvariable") == 1:
+                self.OptionsSelected.append(self.Options[counter])
+            counter +=1
+        # Apply options to the CardPool
+        self.applyOptions()
+
+
+
         # CardPool now contains the dictionary names of the selected cards. 
         # To get more information about the cards you need to use CARDS[name]._attribute_.
         #for i in range(0,10):
@@ -249,6 +308,33 @@ class Dominion (object):
         # Once this selection has been made I should show the picture of the selected cards.
         self.displaySelection()
 
+    def applyOptions(self):
+        for option in self.OptionsSelected:
+            if option == 'Curve':
+                costsAvailable = []
+                for name in self.CardPool:
+                    if len(costsAvailable) == 0:
+                        costsAvailable.append(CARDS[name].cost)
+                    else:
+                        add = True
+                        for cost in costsAvailable:
+                            if CARDS[name].cost == cost:
+                                add = False
+                        if add:
+                            costsAvailable.append(CARDS[name].cost)
+                costsAvailable.sort()
+                # numpy.random.choice(numpy.arange(1,7), p=[0.1,0.05,0.05,0.2,0.4,0.2])
+                
+                #determine probabilites
+                #p = []
+                #for i in costsAvailable:
+                #    p.append(self.gauss(i,mu,sigma))
+            if option == 'High Interaction':
+                print option
+            if option == 'Suggested Sets':
+                print option
+    def gauss(self,i,mu,sigma):
+        pass
     def displaySelection(self):
         imageList = []
         scale = 0.7*self.scale
