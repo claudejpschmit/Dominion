@@ -89,27 +89,38 @@ class Dominion (object):
         self.menu = tk.Menu(self.root)
         self.root.config(menu=self.menu)
         self.subMenu1 = tk.Menu(self.menu)
-        self.menu.add_cascade(label="Menu 1", menu=self.subMenu1)
-        self.subMenu1.add_command(label="Command 1", command=self.doNothing)
-        self.subMenu1.add_command(label="Command 2", command=self.doNothing)
-        self.subMenu1.add_command(label="Command 3", command=self.doNothing)
+        self.menu.add_cascade(label="Menu 1", menu=self.subMenu1,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
+        self.subMenu1.add_command(label="Command 1", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
+        self.subMenu1.add_command(label="Command 2", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
+        self.subMenu1.add_command(label="Command 3", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
         self.subMenu1.add_separator()
-        self.subMenu1.add_command(label="Command 4", command=self.doNothing)
+        self.subMenu1.add_command(label="Command 4", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
         
         self.subMenu2 = tk.Menu(self.menu)
-        self.menu.add_cascade(label="Menu 2", menu=self.subMenu2)
-        self.subMenu2.add_command(label="Command 1", command=self.doNothing)
-        self.subMenu2.add_command(label="Command 2", command=self.doNothing)
-        self.subMenu2.add_command(label="Command 3", command=self.doNothing)
+        self.menu.add_cascade(label="Menu 2", menu=self.subMenu2,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
+        self.subMenu2.add_command(label="Command 1", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
+        self.subMenu2.add_command(label="Command 2", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
+        self.subMenu2.add_command(label="Command 3", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
         self.subMenu2.add_separator()
-        self.subMenu2.add_command(label="Command 4", command=self.doNothing)
+        self.subMenu2.add_command(label="Command 4", command=self.doNothing,\
+                font=('Helvetica',int(self.fontSize*self.scale)))
 
     def __createToolBar__(self):
         pass
 
     def __createStatusBar__(self):
         self.status = tk.Label(self.root, text = " ... Go nuts with the randomizer! ... ",\
-                bd = 1, relief=tk.SUNKEN, anchor = tk.W, width = int(self.scale*1920))
+                bd = 1, relief=tk.SUNKEN, anchor = tk.W, width = int(self.scale*1920),\
+                font=('Helvetica',int(self.fontSize*self.scale)))
         self.status.grid(columnspan=10)
 
     def __createCardViewerMenu__(self):
