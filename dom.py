@@ -39,7 +39,6 @@ class Dominion (object):
         self.cnv.bind_all("<Button-4>", self._on_mousewheel_up)
         self.cnv.bind_all("<Button-5>", self._on_mousewheel_down)
         
-        
         # Initializing Basic Window 
 
         # Make menubar, toolbar and statusbar
@@ -82,6 +81,7 @@ class Dominion (object):
         self.displayfrm = tk.Frame(self.cnv, bg='blue')
         self.cnv.create_window(self.frm.winfo_reqwidth(),0,\
                 window=self.displayfrm,anchor='nw')
+        
     def doNothing(self):
         pass
 
@@ -344,8 +344,10 @@ class Dominion (object):
                 print option
             if option == 'Suggested Sets':
                 print option
+
     def gauss(self,i,mu,sigma):
         pass
+    
     def displaySelection(self):
         imageList = []
         scale = self.imageScale*self.scale
@@ -404,7 +406,7 @@ class Dominion (object):
             l.configure(textvariable = 1) 
 
     def run(self):
-                #----- Resize window ------#
+        #----- Resize window ----- #-
         self.frm.update_idletasks()
         self.displayfrm.update_idletasks()
         self.cnv.configure(scrollregion=(0,0,self.frm.winfo_width(),\
@@ -413,4 +415,3 @@ class Dominion (object):
 
 if __name__=='__main__':
     Dominion().run()
-

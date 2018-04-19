@@ -89,11 +89,83 @@ Seaside_cards = {
         'Warehouse':        CARD(3, "Warehouse", "Seaside", "Action", './pictures/seaside/warehouse.jpg'),
         'Wharf':            CARD(5, "Wharf", "Seaside", "Action - Duration", './pictures/seaside/wharf.jpg')
 }
+Alchemy_cards = {
+        'Alchemist':        CARD(4, "Alchemist", "Alchemy", "Action", './pictures/alchemy/alchemist.jpg'),
+        'Apothecary':       CARD(3, "Apothecary", "Alchemy", "Action", './pictures/alchemy/apothecary.jpg'),
+        'Apprentice':       CARD(5, "Apprentice", "Alchemy", "Action", './pictures/alchemy/apprentice.jpg'),
+        'Familiar':         CARD(4, "Familiar", "Alchemy", "Action - Attack", './pictures/alchemy/familiar.jpg'),
+        'Golem':            CARD(5, "Golem", "Alchemy", "Action", './pictures/alchemy/golem.jpg'),
+        'Herbalist':        CARD(2, "Herbalist", "Alchemy", "Action", './pictures/alchemy/herbalist.jpg'),
+        'PhilosopherStone': CARD(3, "Philosopher Stone", "Alchemy", "Treasure", './pictures/alchemy/philosophersstone.jpg'),
+        'Possession':       CARD(7, "Possession", "Alchemy", "Action", './pictures/alchemy/possession.jpg'),
+        'ScryingPool':      CARD(3, "Scrying Pool", "Alchemy", "Action - Attack", './pictures/alchemy/scryingpool.jpg'),
+        'Transmute':        CARD(3, "Transmute", "Alchemy", "Action", './pictures/alchemy/transmute.jpg'),
+        'University':       CARD(3, "University", "Alchemy", "Action", './pictures/alchemy/university.jpg'),
+        'Vineyard':         CARD(1, "Vineyard", "Alchemy", "Action - Attack", './pictures/alchemy/vineyard.jpg')
+}
+Prosperity_cards = {
+        'Bank':             CARD(7, "Bank", "Prosperity", "Treasure", './pictures/prosperity/bank.jpg'),
+        'Bishop':           CARD(4, "Bishop", "Prosperity", "Action", './pictures/prosperity/bishop.jpg'),
+        'City':             CARD(5, "City", "Prosperity", "Action", './pictures/prosperity/city.jpg'),
+        'Contraband':       CARD(5, "Contrabans", "Prosperity", "Treasure", './pictures/prosperity/contraband.jpg'),
+        'CountingHouse':    CARD(5, "Counting House", "Prosperity", "Action", './pictures/prosperity/countinghouse.jpg'),
+        'Expand':           CARD(7, "Expand", "Prosperity", "Action", './pictures/prosperity/expand.jpg'),
+        'Forge':            CARD(7, "Forge", "Prosperity", "Action", './pictures/prosperity/forge.jpg'),
+        'Goons':            CARD(6, "Goons", "Prosperity", "Action - Attack", './pictures/prosperity/goons.jpg'),
+        'GrandMarket':      CARD(6, "Grand Market", "Prosperity", "Action", './pictures/prosperity/grandmarket.jpg'),
+        'Hoard':            CARD(6, "Hoard", "Prosperity", "Treasure", './pictures/prosperity/hoard.jpg'),
+        'KingsCourt':       CARD(7, "King's Court", "Prosperity", "Action", './pictures/prosperity/kingscourt.jpg'),
+        'Loan':             CARD(3, "Loan", "Prosperity", "Treasure", './pictures/prosperity/loan.jpg'),
+        'Mint':             CARD(5, "Mint", "Prosperity", "Action", './pictures/prosperity/mint.jpg'),
+        'Monument':         CARD(4, "Monument", "Prosperity", "Action", './pictures/prosperity/monument.jpg'),
+        'Mountebank':       CARD(5, "Mountebank", "Prosperity", "Action - Attack", './pictures/prosperity/mountebank.jpg'),
+        'Peddler':          CARD(8, "Peddler", "Prosperity", "Action", './pictures/prosperity/peddler.jpg'),
+        'Quarry':           CARD(4, "Quarry", "Prosperity", "Treasure", './pictures/prosperity/quarry.jpg'),
+        'Rabble':           CARD(5, "Rabble", "Prosperity", "Action - Attack", './pictures/prosperity/rabble.jpg'),
+        'RoyalSeal':        CARD(5, "Royal Seal", "Prosperity", "Treasure", './pictures/prosperity/royalseal.jpg'),
+        'Talisman':         CARD(4, "Talisman", "Prosperity", "Treasure", './pictures/prosperity/talisman.jpg'),
+        'TradeRoute':       CARD(3, "Trade Route", "Prosperity", "Action", './pictures/prosperity/traderoute.jpg'),
+        'Vault':            CARD(5, "Vault", "Prosperity", "Action", './pictures/prosperity/vault.jpg'),
+        'Venture':          CARD(5, "Venture", "Prosperity", "Treasure", './pictures/prosperity/venture.jpg'),
+        'Watchtower':       CARD(3, "Watchtower", "Prosperity", "Action - Reaction", './pictures/prosperity/watchtower.jpg'),
+        'WorkersVillage':   CARD(4, "Worker's Village", "Prosperity", "Action", './pictures/prosperity/workersvillage.jpg')
+}
+Hinterlands_cards = {
+        'BorderVillage':    CARD(6, "Border Village", "Hinterlands", "Action", './pictures/hinterlands/bordervillage.jpg'),
+        'Cache':            CARD(4, "Cache", "Hinterlands", "Treasure", './pictures/hinterlands/cache.jpg'),
+        'Cartographer':     CARD(5, "Cartographer", "Hinterlands", "Action", './pictures/hinterlands/cartographer.jpg'),
+        'Crossroads':       CARD(2, "Crossroads", "Hinterlands", "Action", './pictures/hinterlands/crossroads.jpg'),
+        'Develop':          CARD(3, "Develop", "Hinterlands", "Action", './pictures/hinterlands/develop.jpg'),
+        'Duchess':          CARD(2, "Duchess", "Hinterlands", "Action", './pictures/hinterlands/duchess.jpg'),
+        'Embassy':          CARD(5, "Embassy", "Hinterlands", "Action", './pictures/hinterlands/embassy.jpg'),
+        'Farmland':         CARD(4, "Farmland", "Hinterlands", "Victory", './pictures/hinterlands/farmland.jpg'),
+        'FoolsGold':        CARD(2, "Fool's Gold", "Hinterlands", "Treasure - Reaction", './pictures/hinterlands/foolsgold.jpg'),
+        'Haggler':          CARD(5, "Haggler", "Hinterlands", "Action", './pictures/hinterlands/haggler.jpg'),
+        'Highway':          CARD(5, "Highway", "Hinterlands", "Action", './pictures/hinterlands/highway.jpg'),
+        'IllGottenGains':   CARD(5, "Ill-Gotten Gains", "Hinterlands", "Treasure", './pictures/hinterlands/illgottengains.jpg'),
+        'Inn':              CARD(5, "Inn", "Hinterlands", "Action", './pictures/hinterlands/inn.jpg'),
+        'JackOfAllTrades':  CARD(4, "Jack of all Trades", "Hinterlands", "Action", './pictures/hinterlands/jackofalltrades.jpg'),
+        'Mandarin':         CARD(5, "Mandarin", "Hinterlands", "Action", './pictures/hinterlands/mandarin.jpg'),
+        'Margrave':         CARD(5, "Margrave", "Hinterlands", "Action - Attack", './pictures/hinterlands/margrave.jpg'),
+        'NobleBrigand':     CARD(4, "Noble Brigand", "Hinterlands", "Action - Attack", './pictures/hinterlands/noblebrigand.jpg'),
+        'NomadCamp':        CARD(4, "Nomad Camp", "Hinterlands", "Action", './pictures/hinterlands/nomadcamp.jpg'),
+        'Oasis':            CARD(3, "Oasis", "Hinterlands", "Action", './pictures/hinterlands/oasis.jpg'),
+        'Oracle':           CARD(3, "Oracle", "Hinterlands", "Action - Attack", './pictures/hinterlands/oracle.jpg'),
+        'Scheme':           CARD(3, "Scheme", "Hinterlands", "Action", './pictures/hinterlands/scheme.jpg'),
+        'SilkRoad':         CARD(4, "Silk Road", "Hinterlands", "Victory", './pictures/hinterlands/silkroad.jpg'),
+        'SpiceMerchant':    CARD(4, "Spice Merchant", "Hinterlands", "Action", './pictures/hinterlands/spicemerchant.jpg'),
+        'Stables':          CARD(5, "Stables", "Hinterlands", "Action", './pictures/hinterlands/stables.jpg'),
+        'Trader':           CARD(4, "Trader", "Hinterlands", "Action - Reaction", './pictures/hinterlands/trader.jpg'),
+        'Tunnel':          CARD(3, "Tunnel", "Hinterlands", "Victory - Reaction", './pictures/hinterlands/tunnel.jpg')
+}
 
 # ADD all expansions to the CARDS dictionary.
 CARDS.update(Dominion_base_cards)
 CARDS.update(Intrigue_cards)
 CARDS.update(Seaside_cards)
+CARDS.update(Alchemy_cards)
+CARDS.update(Prosperity_cards)
+CARDS.update(Hinterlands_cards)
 
 # Make a list with all the card names in alphabetical order.
 CARDNAMES = []
