@@ -12,7 +12,7 @@ import sys
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
-        self.scale = 1
+        self.scale = 1.5
         self.root.tk.call('tk', 'scaling', self.scale)
         self.fontSize = 8
         self.root.bind("<Escape>", self._close)

@@ -130,6 +130,21 @@ Prosperity_cards = {
         'Watchtower':       CARD(3, "Watchtower", "Prosperity", "Action - Reaction", './pictures/prosperity/watchtower.jpg'),
         'WorkersVillage':   CARD(4, "Worker's Village", "Prosperity", "Action", './pictures/prosperity/workersvillage.jpg')
 }
+Cornucopia_cards = {
+        'Fairgrounds':      CARD(6, "Fairgrounds", "Cornucopia", "Victory", './pictures/cornucopia/fairgrounds.jpg'),
+        'FarmingVillage':   CARD(4, "Farming Village", "Cornucopia", "Action", './pictures/cornucopia/farmingvillage.jpg'),
+        'FortuneTeller':    CARD(3, "Fortune Teller", "Cornucopia", "Action - Attack", './pictures/cornucopia/fortuneteller.jpg'),
+        'Hamlet':           CARD(2, "Hamlet", "Cornucopia", "Action", './pictures/cornucopia/hamlet.jpg'),
+        'Harvest':          CARD(5, "Harvest", "Cornucopia", "Action", './pictures/cornucopia/harvest.jpg'),
+        'HornOfPlenty':     CARD(5, "Horn of Plenty", "Cornucopia", "Treasure", './pictures/cornucopia/hornofplenty.jpg'),
+        'HorseTrader':      CARD(4, "Horse Trader", "Cornucopia", "Action - Reaction", './pictures/cornucopia/horsetraders.jpg'),
+        'HuntingParty':     CARD(5, "Hunting Party", "Cornucopia", "Action", './pictures/cornucopia/huntingparty.jpg'),
+        'Jester':           CARD(5, "Jester", "Cornucopia", "Action - Attack", './pictures/cornucopia/jester.jpg'),
+        'Menagerie':        CARD(3, "Menagerie", "Cornucopia", "Action", './pictures/cornucopia/menagerie.jpg'),
+        'Remake':           CARD(4, "Remake", "Cornucopia", "Action", './pictures/cornucopia/remake.jpg'),
+        'Tournament':       CARD(4, "Tournament", "Cornucopia", "Action", './pictures/cornucopia/tournament.jpg'),
+        'YoungWitch':       CARD(4, "Young Witch", "Cornucopia", "Action - Attack", './pictures/cornucopia/youngwitch.jpg')
+}
 Hinterlands_cards = {
         'BorderVillage':    CARD(6, "Border Village", "Hinterlands", "Action", './pictures/hinterlands/bordervillage.jpg'),
         'Cache':            CARD(4, "Cache", "Hinterlands", "Treasure", './pictures/hinterlands/cache.jpg'),
@@ -156,8 +171,40 @@ Hinterlands_cards = {
         'SpiceMerchant':    CARD(4, "Spice Merchant", "Hinterlands", "Action", './pictures/hinterlands/spicemerchant.jpg'),
         'Stables':          CARD(5, "Stables", "Hinterlands", "Action", './pictures/hinterlands/stables.jpg'),
         'Trader':           CARD(4, "Trader", "Hinterlands", "Action - Reaction", './pictures/hinterlands/trader.jpg'),
-        'Tunnel':          CARD(3, "Tunnel", "Hinterlands", "Victory - Reaction", './pictures/hinterlands/tunnel.jpg')
+        'Tunnel':           CARD(3, "Tunnel", "Hinterlands", "Victory - Reaction", './pictures/hinterlands/tunnel.jpg')
 }
+DarkAges_cards = {
+        'Altar':            CARD(6, "Altar", "Dark Ages", "Action", './pictures/darkages/altar.jpg'),
+        'Armory':           CARD(4, "Armory", "Dark Ages", "Action", './pictures/darkages/armory.jpg'),
+        'BanditCamp':       CARD(5, "Bandit Camp", "Dark Ages", "Action", './pictures/darkages/banditcamp.jpg'),
+        'BandOfMisfits':    CARD(5, "Band of Misfits", "Dark Ages", "Action", './pictures/darkages/bandofmisfits.jpg'),
+        'Beggar':           CARD(2, "Beggar", "Dark Ages", "Action - Reaction", './pictures/darkages/beggar.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+        '':    CARD(4, "", "Dark Ages", "Action", './pictures/darkages/.jpg'),
+}
+Guilds_cards = {
+}
+Adventures_cards = {
+}
+Empires_cards = {
+}
+Nocturne_cards = {
+}
+
+
+
+
+
+
+
+
 
 # ADD all expansions to the CARDS dictionary.
 CARDS.update(Dominion_base_cards)
