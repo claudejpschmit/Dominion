@@ -222,12 +222,38 @@ DarkAges_cards = {
         'WanderingMinstrel':CARD(4, "Wandering Minstrel", "Dark Ages", "Action", './pictures/darkages/wanderingminstrel.jpg')
 }
 Guilds_cards = {
+        'Advisor':          CARD(4, "Advisor", "Guilds", "Action", './pictures/guilds/advisor.jpg'),
+        'Baker':            CARD(5, "Baker", "Guilds", "Action", './pictures/guilds/baker.jpg'),
+        'Butcher':          CARD(5, "Butcher", "Guilds", "Action", './pictures/guilds/butcher.jpg'),
+        'CandlestickMaker': CARD(2, "Candlestick Maker", "Guilds", "Action", './pictures/guilds/candlestickmaker.jpg'),
+        'Doctor':           CARD(3, "Doctor", "Guilds", "Action", './pictures/guilds/doctor.jpg'),
+        'Herald':           CARD(4, "Herald", "Guilds", "Action", './pictures/guilds/herald.jpg'),
+        'Journeyman':       CARD(5, "Journeyman", "Guilds", "Action", './pictures/guilds/journeyman.jpg'),
+        'Masterpiece':      CARD(3, "Masterpiece", "Guilds", "Treasure", './pictures/guilds/masterpiece.jpg'),
+        'MerchantGuild':    CARD(5, "Merchant Guild", "Guilds", "Action", './pictures/guilds/merchantguild.jpg'),
+        'Plaza':            CARD(4, "Plaza", "Guilds", "Action", './pictures/guilds/plaza.jpg'),
+        'Soothsayer':       CARD(5, "Soothsayer", "Guilds", "Action - Attack", './pictures/guilds/soothsayer.jpg'),
+        'Stonemason':       CARD(2, "Stonemason", "Guilds", "Action", './pictures/guilds/stonemason.jpg'),
+        'Taxman':           CARD(4, "Taxman", "Guilds", "Action - Attack", './pictures/guilds/taxman.jpg')
 }
 Adventures_cards = {
+        '':            CARD(4, "", "Adventures", "Action", './pictures/adventures/.jpg'),
+        '':            CARD(4, "", "Adventures", "Action", './pictures/adventures/.jpg'),
+        '':            CARD(4, "", "Adventures", "Action", './pictures/adventures/.jpg'),
+        '':            CARD(4, "", "Adventures", "Action", './pictures/adventures/.jpg'),
 }
 Empires_cards = {
+        '':            CARD(4, "", "Empires", "Action", './pictures/empires/.jpg'),
+        '':            CARD(4, "", "Empires", "Action", './pictures/empires/.jpg'),
+        '':            CARD(4, "", "Empires", "Action", './pictures/empires/.jpg'),
+        '':            CARD(4, "", "Empires", "Action", './pictures/empires/.jpg'),
 }
 Nocturne_cards = {
+        '':            CARD(4, "", "Nocturne", "Action", './pictures/nocturne/.jpg'),
+        '':            CARD(4, "", "Nocturne", "Action", './pictures/nocturne/.jpg'),
+        '':            CARD(4, "", "Nocturne", "Action", './pictures/nocturne/.jpg'),
+        '':            CARD(4, "", "Nocturne", "Action", './pictures/nocturne/.jpg'),
+        '':            CARD(4, "", "Nocturne", "Action", './pictures/nocturne/.jpg'),
 }
 
 
