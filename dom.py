@@ -4,15 +4,8 @@ from Libraries import *
 import random as rd
 import sys
 
-# On Linux I think this needs to be commented out
 
-if sys.platform == "linux" or sys.platform == "linux2":
-    # linux
-    print "linux"
-elif sys.platform == "darwin":
-    # OS X
-    print "os"
-elif sys.platform == "win32":
+if sys.platform == "win32":
     # Windows...
     from win32api import GetSystemMetrics
 
@@ -21,7 +14,7 @@ elif sys.platform == "win32":
 # instead just calls functions that create these things. That way it should be a bit cleaner and easier to 
 # look at.
 
-# Choose this to be either Windows, Linux_hdpi, or Linux
+# Choose this to be either true or false, only working for Linux
 HIDPI = True
 
 class Dominion (object):
@@ -47,7 +40,7 @@ class Dominion (object):
         elif sys.platform == "win32":
             # Windows...
             self.scale = 1
-            self.fontSize = 12
+            self.fontSize = 14
             self.winWidth = GetSystemMetrics(0)
             self.winHeight = GetSystemMetrics(1)
 
@@ -294,7 +287,6 @@ class Dominion (object):
         sys.exit()
         
     def _on_mousewheel_up(self, event):
-        print "hello"
         self.cnv.yview_scroll(-2,"units")
          
     def _on_mousewheel_down(self, event):

@@ -271,6 +271,11 @@ CARDS.update(Seaside_cards)
 CARDS.update(Alchemy_cards)
 CARDS.update(Prosperity_cards)
 CARDS.update(Hinterlands_cards)
+CARDS.update(DarkAges_cards)
+CARDS.update(Guilds_cards)
+#CARDS.update(Adventures_cards)
+#CARDS.update(Empires_cards)
+#CARDS.update(Nocturne_cards)
 
 # Make a list with all the card names in alphabetical order.
 CARDNAMES = []
