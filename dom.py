@@ -80,9 +80,9 @@ class Dominion (object):
             self.cnv.bind_all("<MouseWheel>", self._on_mousewheel)
         
         # Drag Scrolling
-        self.cnv.bind("<Button-1>", self._scroll_start)
-        self.cnv.bind("<B1-Motion>", self._scroll_move)
-        
+        self.cnv.bind_all("<Button-1>", self._scroll_start)
+        self.cnv.bind_all("<B1-Motion>", self._scroll_move)
+        self.cnv.bind_all("<ButtonRelease-1>", self._reset_cursor)
         # Initializing Basic Window 
 
         # Make menubar, toolbar and statusbar
@@ -307,7 +307,11 @@ class Dominion (object):
         self.cnv.scan_mark(event.x, event.y)
         
     def _scroll_move(self, event):
+        self.cnv.config(cursor="fleur")
         self.cnv.scan_dragto(event.x, event.y, gain=1)
+
+    def _reset_cursor(self, event):
+        self.cnv.config(cursor="arrow")
 
     def drawSample(self):
         counter = 0
