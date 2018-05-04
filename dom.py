@@ -22,32 +22,34 @@ elif sys.platform == "win32":
 # look at.
 
 # Choose this to be either Windows, Linux_hdpi, or Linux
-PLATFORM = 'Windows'
+HIDPI = True
 
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
         
-        if PLATFORM == 'Windows':
+        if sys.platform == "linux" or sys.platform == "linux2":
+            # linux
+            print "linux"
+            if HIDPI:
+                self.scale = 1.5
+                self.fontSize = 8
+                self.winWidth = 1920
+                self.winHeight = 1000
+            else:
+                self.scale = 1
+                self.fontSize = 8
+                self.winWidth = 1920
+                self.winHeight = 1000
+        elif sys.platform == "darwin":
+            # OS X
+            print "os X"
+        elif sys.platform == "win32":
+            # Windows...
             self.scale = 1
             self.fontSize = 12
             self.winWidth = GetSystemMetrics(0)
             self.winHeight = GetSystemMetrics(1)
-        elif PLATFORM == 'Linux_hdpi':
-            self.scale = 1.5
-            self.fontSize = 8
-            self.winWidth = 1920
-            self.winHeight = 1000
-        elif PLATFORM == 'Linux':
-            self.scale = 1
-            self.fontSize = 8
-            self.winWidth = 1920
-            self.winHeight = 1000
-        else:
-            self.scale = 1.5
-            self.fontSize = 8
-            self.winWidth = 1920
-            self.winHeight = 1000
 
         self.root.tk.call('tk', 'scaling', self.scale)
         self.root.bind("<Escape>", self._close)
@@ -70,9 +72,12 @@ class Dominion (object):
         self.frm = tk.Frame(self.cnv, bg='white')
         self.cnv.create_window(0,0,window=self.frm,anchor='nw')
         self.imageScale = 0.8
-
-        self.cnv.bind_all("<Button-4>", self._on_mousewheel_up)
-        self.cnv.bind_all("<Button-5>", self._on_mousewheel_down)
+        
+        if sys.platform == "linux" or sys.platform == "linux2":
+            self.cnv.bind_all("<Button-4>", self._on_mousewheel_up)
+            self.cnv.bind_all("<Button-5>", self._on_mousewheel_down)
+        elif sys.platform == "win32":
+            self.cnv.bind_all("<MouseWheel>", self._on_mousewheel)
         
         # Initializing Basic Window 
 
@@ -290,7 +295,8 @@ class Dominion (object):
          
     def _on_mousewheel_down(self, event):
         self.cnv.yview_scroll(2,"units")
-
+    def _on_mousewheel(self, event):
+        self.cnv.yview_scroll(-1*(event.delta/120),"units")
     def drawSample(self):
         counter = 0
         self.ExpansionsSelected = []
