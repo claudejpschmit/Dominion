@@ -4,19 +4,45 @@ from Libraries import *
 import random as rd
 import sys
 
+# On Linux I think this needs to be commented out
+from win32api import GetSystemMetrics
+
 
 # Maybe a better design philosophy is that _init_ doesnt create all the buttonss and things, but 
 # instead just calls functions that create these things. That way it should be a bit cleaner and easier to 
 # look at.
 
+# Choose this to be either Windows, Linux_hdpi, or Linux
+PLATFORM = 'Windows'
+
 class Dominion (object):
     def __init__(self):
         self.root=tk.Tk()
-        self.scale = 1.5
+        
+        if PLATFORM == 'Windows':
+            self.scale = 1
+            self.fontSize = 12
+            self.winWidth = GetSystemMetrics(0)
+            self.winHeight = GetSystemMetrics(1)
+        elif PLATFORM == 'Linux_hdpi':
+            self.scale = 1.5
+            self.fontSize = 8
+            self.winWidth = 1920
+            self.winHeight = 1000
+        elif PLATFORM == 'Linux':
+            self.scale = 1
+            self.fontSize = 8
+            self.winWidth = 1920
+            self.winHeight = 1000
+        else:
+            self.scale = 1.5
+            self.fontSize = 8
+            self.winWidth = 1920
+            self.winHeight = 1000
+
         self.root.tk.call('tk', 'scaling', self.scale)
-        self.fontSize = 8
         self.root.bind("<Escape>", self._close)
-        self.root.minsize(width=int(self.scale*1920), height=int(self.scale*1000))
+        self.root.minsize(width=int(self.scale*self.winWidth), height=int(self.scale*self.winHeight))
         self.labels = []
         self.root.grid_rowconfigure(0,weight=1)
         self.root.grid_columnconfigure(0,weight=1)
@@ -250,6 +276,7 @@ class Dominion (object):
         sys.exit()
         
     def _on_mousewheel_up(self, event):
+        print "hello"
         self.cnv.yview_scroll(-2,"units")
          
     def _on_mousewheel_down(self, event):
@@ -341,9 +368,9 @@ class Dominion (object):
                 #for i in costsAvailable:
                 #    p.append(self.gauss(i,mu,sigma))
             if option == 'High Interaction':
-                print option
+                print(option)
             if option == 'Suggested Sets':
-                print option
+                print(option)
 
     def gauss(self,i,mu,sigma):
         pass
