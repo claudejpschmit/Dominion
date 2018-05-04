@@ -5,7 +5,16 @@ import random as rd
 import sys
 
 # On Linux I think this needs to be commented out
-from win32api import GetSystemMetrics
+
+if sys.platform == "linux" or sys.platform == "linux2":
+    # linux
+    print "linux"
+elif sys.platform == "darwin":
+    # OS X
+    print "os"
+elif sys.platform == "win32":
+    # Windows...
+    from win32api import GetSystemMetrics
 
 
 # Maybe a better design philosophy is that _init_ doesnt create all the buttonss and things, but 
