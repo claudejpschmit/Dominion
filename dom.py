@@ -79,6 +79,10 @@ class Dominion (object):
         elif sys.platform == "win32":
             self.cnv.bind_all("<MouseWheel>", self._on_mousewheel)
         
+        # Drag Scrolling
+        self.cnv.bind("<Button-1>", self._scroll_start)
+        self.cnv.bind("<B1-Motion>", self._scroll_move)
+        
         # Initializing Basic Window 
 
         # Make menubar, toolbar and statusbar
@@ -295,8 +299,16 @@ class Dominion (object):
          
     def _on_mousewheel_down(self, event):
         self.cnv.yview_scroll(2,"units")
+
     def _on_mousewheel(self, event):
         self.cnv.yview_scroll(-1*(event.delta/120),"units")
+
+    def _scroll_start(self, event):
+        self.cnv.scan_mark(event.x, event.y)
+        
+    def _scroll_move(self, event):
+        self.cnv.scan_dragto(event.x, event.y, gain=1)
+
     def drawSample(self):
         counter = 0
         self.ExpansionsSelected = []
